@@ -24,33 +24,28 @@
 
 ### Part 2a: Source Selection
 
-> List the source node types as a bullet list. For each, one-line reason.
-
 | Source Node Type | Why it is a source |
 |---|---|
-| _node type_ | _one-line reason_ |
-| _node type_ | _one-line reason_ |
+| Start Node (S) | Initial node from which we compute the shortest-path to any other node |
+| Goal Node (T) | Destination node in which we compute the shortest paths to reaching it |
+| Intermediate Nodes | Middle-man nodes that can be used to compute distances between all pairs of nodes needed to find the global optimum |
 
 ### Part 2b: Distance Storage
 
-> Fill in the table. No prose required.
-
 | Property | Your answer |
 |---|---|
-| Data structure name | |
-| What the keys represent | |
-| What the values represent | |
-| Lookup time complexity | |
-| Why O(1) lookup is possible | |
+| Data structure name | Dictionary (hash map) |
+| What the keys represent | Pairs of nodes (u, v) representing a source and destination |
+| What the values represent | Shortest-path distance between u and v |
+| Lookup time complexity | O(1) |
+| Why O(1) lookup is possible | Hashing allows direct access to values by key without iteration |
 
 ### Part 2c: Precomputation Complexity
 
-> State the total complexity and show the arithmetic. Two to three lines max.
-
-- **Number of Dijkstra runs:** _your answer_
-- **Cost per run:** _your answer_
-- **Total complexity:** _your answer_
-- **Justification (one line):** _your answer_
+- **Number of Dijkstra runs:** k
+- **Cost per run:** O(m log n)
+- **Total complexity:** O(k * m log n)
+- **Justification (one line):** If we run Dijkstra once for each of the k important nodes to compute the distances to all other nodes when each costs O(m log n), we get O(k * m log n)
 
 ---
 

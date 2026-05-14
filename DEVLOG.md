@@ -11,12 +11,12 @@ My plan is to use the Travelling Salesman Problem as the basis of my design and 
 
 ---
 
-## Entry 2 – [Date]: [Short description]
+## Entry 2 – [5/14/2026]: Implemented Dijkstras Algorithm for Part 2
 
 > Required. At least one entry must describe a bug, wrong assumption, or design change
 > you encountered. Describe what went wrong and how you resolved it.
 
-_Your entry here._
+Hello journal, I have finally implemented the first stage of solving this problem which is using Dijkstra's Algorithm to iterate over each pair node in the graph to find the shortest-path not just in a single run from the start node S to destination T. 
 
 ---
 
