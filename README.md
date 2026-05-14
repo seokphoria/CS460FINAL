@@ -51,38 +51,29 @@
 
 ## Part 3: Algorithm Correctness
 
-> Document your understanding of why Dijkstra produces correct distances.
-> Bullet points and short sentences throughout. No paragraphs.
-
 ### Part 3a: What the Invariant Means
 
-> Two bullets: one for finalized nodes, one for non-finalized nodes.
-> Do not copy the invariant text from the spec.
-
 - **For nodes already finalized (in S):**
-  _Your answer here._
+  For nodes already finalized, the invariant describes that once it is added to S, its distance value is guaranteed to be the shortest possible path from the source x.
 
 - **For nodes not yet finalized (not in S):**
-  _Your answer here._
+  For nodes not yet finalized, the invariant describes that the current distance is the best path found so far only using finalized nodes, yet will still continue to update if a shorter path is to be found when more nodes are processed.
 
 ### Part 3b: Why Each Phase Holds
 
-> One to two bullets per phase. Maintenance must mention nonnegative edge weights.
-
 - **Initialization : why the invariant holds before iteration 1:**
-  _Your answer here._
+  The source node starts with distance 0 since the cost to travel to the source node from itself is 0, and all other distance are infinity as no other paths have been discovered yet.
 
 - **Maintenance : why finalizing the min-dist node is always correct:**
-  _Your answer here._
+  + Finalizing the min-dist node is always correct because all edge weights are nonnegative, so the smallest unfinalized distance could not possibly get any smaller under another run. 
+  + Relaxing outgoing edges continues to update the neighboring nodes' shortest distance paths therefore maintaining that min-dist will always be finalized.
 
 - **Termination : what the invariant guarantees when the algorithm ends:**
-  _Your answer here._
+  The invariant guarantees that all shortest-paths to each node from the source node will be found and finalized when the algorithm ends.
 
 ### Part 3c: Why This Matters for the Route Planner
 
-> One sentence connecting correct distances to correct routing decisions.
-
-_Your answer here._
+This matters for the route planner as in order to make the optimal routing decisions, it is necessary to have the finalized shortest paths from each relevant pair node to then find the shortest path from start node S to destination T.
 
 ---
 

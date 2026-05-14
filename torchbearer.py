@@ -27,9 +27,9 @@ import heapq
 def explain_problem():
     
     explanation = """
-    Q1: A single shortest-path run from S is not enough as it does not tell you what vertices or edges that could be on the shortest-path to a given destination T. It cannot make the decision to know whether a node or edge fall in the shortest path from S to destination T.
-    Q2: The structural decision that remains after all inter-location costs are known is: what structure should be used to optimally organize and connect the locations to fufill our overall objective?
-    Q3: This problem requires a search over orders as the number of different paths that one can take to complete the objective grows combinatorially, and shortest path computations alone do not determine the optimal global arrangement.
+    1A: A single shortest-path run from S is not enough as it does not tell you what vertices or edges that could be on the shortest-path to a given destination T. It cannot make the decision to know whether a node or edge fall in the shortest path from S to destination T.
+    1B: The structural decision that remains after all inter-location costs are known is: what structure should be used to optimally organize and connect the locations to fufill our overall objective?
+    1C: This problem requires a search over orders as the number of different paths that one can take to complete the objective grows combinatorially, and shortest path computations alone do not determine the optimal global arrangement.
     """
     return explanation
 
@@ -70,7 +70,7 @@ def precompute_distances(graph, spawn, relics, exit_node):
     
     sources = select_sources(spawn, relics, exit_node)
     dist_table = {}
-    
+
     for source in sources:
         dist_table[source] = run_dijkstra(graph, source)
 
@@ -82,16 +82,26 @@ def precompute_distances(graph, spawn, relics, exit_node):
 # =============================================================================
 
 def dijkstra_invariant_check():
-    """
-    Returns
-    -------
-    str
-        Your Part 3 README answers, written as a string.
-        Must match what you wrote in README Part 3.
+    answers = """
+    3A: For nodes already finalized (in S):
+        For nodes already finalized, the invariant describes that once it is added to S, its distance value is guaranteed to be the shortest possible path from the source x.
+        
+        For nodes not yet finalized (not in S):**
+        For nodes not yet finalized, the invariant describes that the current distance is the best path found so far only using finalized nodes, yet will still continue to update if a shorter path is to be found when more nodes are processed.
+    
+    3B: Initialization : why the invariant holds before iteration 1:
+        The source node starts with distance 0 since the cost to travel to the source node from itself is 0, and all other distance are infinity as no other paths have been discovered yet.
+        
+        Maintenance : why finalizing the min-dist node is always correct:
+        Finalizing the min-dist node is always correct because all edge weights are nonnegative, so the smallest unfinalized distance could not possibly get any smaller under another run. 
+        Relaxing outgoing edges continues to update the neighboring nodes' shortest distance paths therefore maintaining that min-dist will always be finalized.
 
-    TODO
+        Termination : what the invariant guarantees when the algorithm ends:
+        The invariant guarantees that all shortest-paths to each node from the source node will be found and finalized when the algorithm ends.
+    
+    3C: This matters for the route planner as in order to make the optimal routing decisions, it is necessary to have the finalized shortest paths from each relevant pair node to then find the shortest path from start node S to destination T.
     """
-    return "TODO"
+    return answers
 
 
 # =============================================================================
