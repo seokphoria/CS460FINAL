@@ -1,29 +1,22 @@
 # The Torchbearer
 
-**Student Name:** ___________________________
-**Student ID:** ___________________________
+**Student Name:** Sophia Phung
+**Student ID:** 132046561
 **Course:** CS 460 – Algorithms | Spring 2026
-
-> This README is your project documentation. Write it the way a developer would document
-> their design decisions , bullet points, brief justifications, and concrete examples where
-> required. You are not writing an essay. You are explaining what you built and why you built
-> it that way. Delete all blockquotes like this one before submitting.
 
 ---
 
 ## Part 1: Problem Analysis
 
-> Document why this problem is not just a shortest-path problem. Three bullet points, one
-> per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  _Your answer here._
+  A single shortest-path run from S is not enough as it does not tell you what vertices or edges that could be on the shortest-path to a given destination T. It cannot make the decision to know whether a node or edge fall in the shortest path from S to destination T.
 
 - **What decision remains after all inter-location costs are known:**
-  _Your answer here._
+  The structural decision that remains after all inter-location costs are known is: what structure should be used to optimally organize and connect the locations to fufill our overall objective?
 
 - **Why this requires a search over orders (one sentence):**
-  _Your answer here._
+  This problem requires a search over orders as the number of different paths that one can take to complete the objective grows combinatorially, and shortest path computations alone do not determine the optimal global arrangement.
 
 ---
 

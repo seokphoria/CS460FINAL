@@ -1,21 +1,13 @@
 # Development Log – The Torchbearer
 
-**Student Name:** ___________________________
-**Student ID:** ___________________________
-
-> Instructions: Write at least four dated entries. Required entry types are marked below.
-> Two to five sentences per entry is sufficient. Write entries as you go, not all in one
-> sitting. Graders check that entries reflect genuine work across multiple sessions.
-> Delete all blockquotes before submitting.
+**Student Name:** Sophia Phung
+**Student ID:** 132046561
 
 ---
 
-## Entry 1 – [Date]: Initial Plan
+## Entry 1 – [5/13/2026]: Initial Plan
 
-> Required. Write this before writing any code. Describe your plan: what you will
-> implement first, what parts you expect to be difficult, and how you plan to test.
-
-_Your entry here._
+My plan is to use the Travelling Salesman Problem as the basis of my design and advance from there, as it is similar in terms of what we are solving. I am working on the introductory parts first before programming any code, and figuring out what structure I will be using to implement my solution. I expect the logistics of this problem to be the most difficult, aka the first couple parts, as you must figure out what structure is the best then calculate what the most optimal solution should be and compare with your algorithm's results, which is much more brain power than just putting in code and praying it gives an answer. I plan to test by running my program within VSCode using my terminal on hopes and dreams.
 
 ---
 

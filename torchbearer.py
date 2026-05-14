@@ -34,7 +34,9 @@ def explain_problem():
 
     TODO
     """
-    return "TODO"
+    return """Q1: A single shortest-path run from S is not enough as it does not tell you what vertices or edges that could be on the shortest-path to a given destination T. It cannot make the decision to know whether a node or edge fall in the shortest path from S to destination T.
+    Q2: The structural decision that remains after all inter-location costs are known is: what structure should be used to optimally organize and connect the locations to fufill our overall objective?
+    Q3: This problem requires a search over orders as the number of different paths that one can take to complete the objective grows combinatorially, and shortest path computations alone do not determine the optimal global arrangement."""
 
 
 # =============================================================================
