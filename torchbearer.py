@@ -109,16 +109,24 @@ def dijkstra_invariant_check():
 # =============================================================================
 
 def explain_search():
-    """
-    Returns
-    -------
-    str
-        Your Part 4 README answers, written as a string.
-        Must match what you wrote in README Part 4.
+    answers = """
+    The failure mode: A route fails when a shorter distance (more optimal) route is found.
+    Counter-example setup: Given this table as my counter-example map,
+        | From \ To | B   | C   | D   | T   |
+        |-----------|-----|-----|-----|-----|
+        | S         | 1   | 2   | 2   | --  |
+        | B         | --  | 1   | 100 | 1   |
+        | C         | 1   | --  | 100 | 100 |
+        | D         | 100 | 1   | --  | 100 |
+    What greedy picks: Greedy chooses S -> B -> C -> D -> T, however, the cost of this path is:
+        1 + 1 + 100 + 100 = 202
+    What optimal picks: The optimal route chooses S -> D -> C -> B -> T, with cost:
+        2 + 1 + 1 + 1 = 5
+    Why greedy loses: Greedy chooses the cheapest next step locally, but that choice can force expensive later steps, so the final route may not be optimal.
 
-    TODO
+    The algorithm must explore different orders of visiting the required nodes because the total route cost depends on the sequence in which the nodes are traversed.
     """
-    return "TODO"
+    return answers
 
 
 # =============================================================================

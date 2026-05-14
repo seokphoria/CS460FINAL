@@ -17,7 +17,7 @@ Hello journal, I have finally implemented the first stage of solving this proble
 
 ---
 
-## Entry 3 – [Date]: [Short description]
+## Entry 3 – [5/14/2026]: Working on Part 4, will come back to add part 5
 
 _Your entry here._
 
@@ -38,10 +38,10 @@ _Your entry here._
 
 | Part | Estimated Hours |
 |---|---|
-| Part 1: Problem Analysis | |
-| Part 2: Precomputation Design | |
-| Part 3: Algorithm Correctness | |
-| Part 4: Search Design | |
+| Part 1: Problem Analysis | 1 |
+| Part 2: Precomputation Design | 2 |
+| Part 3: Algorithm Correctness | 1 |
+| Part 4: Search Design | 1 |
 | Part 5: State and Search Space | |
 | Part 6: Pruning | |
 | Part 7: Implementation | |

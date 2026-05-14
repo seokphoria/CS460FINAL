@@ -81,20 +81,23 @@ This matters for the route planner as in order to make the optimal routing decis
 
 ### Why Greedy Fails
 
-> State the failure mode. Then give a concrete counter-example using specific node names
-> or costs (you may use the illustration example from the spec). Three to five bullets.
-
-- **The failure mode:** _Your answer here._
-- **Counter-example setup:** _Your answer here._
-- **What greedy picks:** _Your answer here._
-- **What optimal picks:** _Your answer here._
-- **Why greedy loses:** _Your answer here._
+- **The failure mode:** A route fails when a shorter distance (more optimal) route is found.
+- **Counter-example setup:** Given this table as my counter-example map,
+    | From \ To | B   | C   | D   | T   |
+    |-----------|-----|-----|-----|-----|
+    | S         | 1   | 2   | 2   | --  |
+    | B         | --  | 1   | 100 | 1   |
+    | C         | 1   | --  | 100 | 100 |
+    | D         | 100 | 1   | --  | 100 |
+- **What greedy picks:** Greedy chooses S -> B -> C -> D -> T, however, the cost of this path is:
+    1 + 1 + 100 + 100 = 202
+- **What optimal picks:** The optimal route chooses S -> D -> C -> B -> T, with cost:
+    2 + 1 + 1 + 1 = 5
+- **Why greedy loses:** Greedy chooses the cheapest next step locally, but that choice can force expensive later steps, so the final route may not be optimal.
 
 ### What the Algorithm Must Explore
 
-> One bullet. Must use the word "order."
-
-- _Your answer here._
+- The algorithm must explore different orders of visiting the required nodes because the total route cost depends on the sequence in which the nodes are traversed.
 
 ---
 
