@@ -81,7 +81,7 @@ This matters for the route planner as in order to make the optimal routing decis
 
 ### Why Greedy Fails
 
-- **The failure mode:** A route fails when a shorter distance (more optimal) route is found.
+- **The failure mode:** A route fails when a smaller cost (more optimal) route is found.
 - **Counter-example setup:** Given this table as my counter-example map,
     | From \ To | B   | C   | D   | T   |
     |-----------|-----|-----|-----|-----|
@@ -105,33 +105,26 @@ This matters for the route planner as in order to make the optimal routing decis
 
 ### Part 5a: State Representation
 
-> Document the three components of your search state as a table.
-> Variable names here must match exactly what you use in torchbearer.py.
-
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
-| Current location | | | |
-| Relics already collected | | | |
-| Fuel cost so far | | | |
+| Current location | current_loc | node | is the current location we are exploring from to find the most optimal sequence of relics following it |
+| Relics already collected | relics_visited_order | list | keeps track of already visited relics in order to not re-visit them and stall the program |
+| Fuel cost so far | cost_so_far | float | keeps track of the fuel cost so far to be compared with our current best cost to find the smallest cost |
 
 ### Part 5b: Data Structure for Visited Relics
 
-> Fill in the table.
-
 | Property | Your answer |
 |---|---|
-| Data structure chosen | |
-| Operation: check if relic already collected | Time complexity: |
-| Operation: mark a relic as collected | Time complexity: |
-| Operation: unmark a relic (backtrack) | Time complexity: |
-| Why this structure fits | |
+| Data structure chosen | list |
+| Operation: check if relic already collected | Time complexity: O(k) |
+| Operation: mark a relic as collected | Time complexity: O(1) |
+| Operation: unmark a relic (backtrack) | Time complexity: O(1) |
+| Why this structure fits | This structure fits because we are simply keeping track of what has already been visited, and then using append/pop to backtrack when necessary while directly storing thr route order returned by the algorithm |
 
 ### Part 5c: Worst-Case Search Space
 
-> Two bullets.
-
-- **Worst-case number of orders considered:** _Your answer (in terms of k)._
-- **Why:** _One-line justification._
+- **Worst-case number of orders considered:** O(k!)
+- **Why:** The algorithm may need to explore every possible order of visiting the k relics, and the number of permutations of k items goes as k * (k-1) * (k-2) *... 1 which is k!
 
 ---
 
@@ -163,6 +156,5 @@ This matters for the route planner as in order to make the optimal routing decis
 
 ## References
 
-> Bullet list. If none beyond lecture notes, write that.
-
-- _Your references here._
+- Lecture Notes by Manju Muralidharan Priya, Canvas
+- "Dijkstra’s Shortest Path Algorithm in Python" by Nkugwa Mark William, Medium Article, 2023
