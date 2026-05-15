@@ -8,7 +8,6 @@
 
 ## Part 1: Problem Analysis
 
-
 - **Why a single shortest-path run from S is not enough:**
   A single shortest-path run from S is not enough as it does not tell you what vertices or edges that could be on the shortest-path to a given destination T. It cannot make the decision to know whether a node or edge fall in the shortest path from S to destination T.
 
@@ -54,7 +53,7 @@
 ### Part 3a: What the Invariant Means
 
 - **For nodes already finalized (in S):**
-  For nodes already finalized, the invariant describes that once it is added to S, its distance value is guaranteed to be the shortest possible path from the source x.
+  For nodes already finalized, the invariant describes that once it is added to S, its distance value is guaranteed to be the shortest possible path from the source.
 
 - **For nodes not yet finalized (not in S):**
   For nodes not yet finalized, the invariant describes that the current distance is the best path found so far only using finalized nodes, yet will still continue to update if a shorter path is to be found when more nodes are processed.
@@ -62,11 +61,11 @@
 ### Part 3b: Why Each Phase Holds
 
 - **Initialization : why the invariant holds before iteration 1:**
-  The source node starts with distance 0 since the cost to travel to the source node from itself is 0, and all other distance are infinity as no other paths have been discovered yet.
+  The source node starts with distance 0 since the cost to travel to the source node from itself is 0, and all other distances are infinity as no other paths have been discovered yet.
 
 - **Maintenance : why finalizing the min-dist node is always correct:**
   + Finalizing the min-dist node is always correct because all edge weights are nonnegative, so the smallest unfinalized distance could not possibly get any smaller under another run. 
-  + Relaxing outgoing edges continues to update the neighboring nodes' shortest distance paths therefore maintaining that min-dist will always be finalized.
+  + Relaxing outgoing edges continues to update the neighboring nodes' shortest distance paths therefore maintaining that the minimum distance will always be finalized.
 
 - **Termination : what the invariant guarantees when the algorithm ends:**
   The invariant guarantees that all shortest-paths to each node from the source node will be found and finalized when the algorithm ends.
@@ -132,25 +131,19 @@ This matters for the route planner as in order to make the optimal routing decis
 
 ### Part 6a: Best-So-Far Tracking
 
-> Three bullets.
-
-- **What is tracked:** _Your answer here._
-- **When it is used:** _Your answer here._
-- **What it allows the algorithm to skip:** _Your answer here._
+- **What is tracked:** The smallest fuel cost and its sequence of relics (path) so far.
+- **When it is used:** When comparing with a new found cost to find if it is smaller than our current best found cost for a path.
+- **What it allows the algorithm to skip:** If a cost for a found path is greater than our best, we can skip further exploring this path because any further exploration will only increase or preserve cost.
 
 ### Part 6b: Lower Bound Estimation
 
-> Three bullets.
-
-- **What information is available at the current state:** _Your answer here._
-- **What the lower bound accounts for:** _Your answer here._
-- **Why it never overestimates:** _Your answer here._
+- **What information is available at the current state:** The current location, the relics already visited and their sequence, the remaining relics to collect, the fuel cost accumulated so far, the best complete route found so far, and the precomputed shortest-path distances between important nodes.
+- **What the lower bound accounts for:** The minimum possible additional travel cost required to visit the remaining relics and reach the exit node.
+- **Why it never overestimates:** It never overestimates because it represents the minimum possible remaining cost from the current state, so it must always be less than or equal to the true optimal remaining cost.
 
 ### Part 6c: Pruning Correctness
 
-> One to two bullets. Explain why pruning is safe.
-
-- _Your answer here._
+- If the cost so far is already greater than or equal to the best cost found, we can safely prune this path because all edge weights are nonnegative, so any further exploration can only increase or preserve the total cost and therefore cannot produce a better solution than the current best.
 
 ---
 

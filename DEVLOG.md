@@ -17,24 +17,19 @@ Hello journal, I have finally implemented the first stage of solving this proble
 
 ---
 
-## Entry 3 – [5/14/2026]: Working on Part 4, will come back to add part 5
+## Entry 3 – [5/14/2026]: Establishing why Greedy fails in Part 4 and implementing my solution to find the optimal route in Part 5
 
-_Your entry here._
-
----
-
-## Entry 4 – [Date]: Post-Implementation Reflection
-
-> Required. Written after your implementation is complete. Describe what you would
-> change or improve given more time.
-
-_Your entry here._
+Hi again journal, I have since established why a greedy solution would not work for our specific problem and incorporated one that could actually help us find the optimal solution by checking each possible sequence of relics in order to find the lowest cost option, included with backtracking and pruning. At first I was having trouble figuring out how to properly structure my find_optimal_route() and _explore() helper methods, but I used the help of lecture notes and previous assignments to figure out the order in which I should prune, check the base case, and recur with all the necessary features like updating if a smaller cost is found. Then, I updated the README.md to include all of the components and properties I used in my solution as well as the time complexities.
 
 ---
 
-## Final Entry – [Date]: Time Estimate
+## Entry 4 – [5/14/2026]: Post-Implementation Reflection
 
-> Required. Estimate minutes spent per part. Honesty is expected; accuracy is not graded.
+HELLO JOURNAL FOR THE LAST TIME! It has been quite a ride, rather than spacing out 15 hours of work throughout a couple days, I had decided to do 15 hours of work straight and will reconsider my life choices in the future (I did take sleep and snack breaks). If given more time, I would probably work on better articulating my algorithm and thought process in the README.md since I felt like it got too wordy or redundant for some of the content. With the code implementation, I want to practice retracing my logic steps and translating that into code more, since I spent way too much time thinking about how to start tackling the problem, although I did have a viable solution in the end. Overall, this was a practical final assessment that concludes this whole class semester, and I have learned a lot from the very beginning until now.
+
+---
+
+## Final Entry – [5/14/2026]: Time Estimate
 
 | Part | Estimated Hours |
 |---|---|
@@ -42,8 +37,8 @@ _Your entry here._
 | Part 2: Precomputation Design | 2 |
 | Part 3: Algorithm Correctness | 1 |
 | Part 4: Search Design | 1 |
-| Part 5: State and Search Space | |
-| Part 6: Pruning | |
-| Part 7: Implementation | |
-| README and DEVLOG writing | |
-| **Total** | |
+| Part 5: State and Search Space | 2 |
+| Part 6: Pruning | 1 |
+| Part 7: Implementation | 5 |
+| README and DEVLOG writing | 2 |
+| **Total** | 15 |

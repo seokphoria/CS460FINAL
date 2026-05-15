@@ -5,20 +5,9 @@ The Torchbearer
 Student Name: Sophia Phung
 Student ID:   132046561
 
-INSTRUCTIONS
-------------
-- Implement every function marked TODO.
-- Do not change any function signature.
-- Do not remove or rename required functions.
-- You may add helper functions.
-- Variable names in your code must match what you define in README Part 5a.
-- The pruning safety comment inside _explore() is graded. Do not skip it.
-
-Submit this file as: torchbearer.py
 """
 
 import heapq
-
 
 # =============================================================================
 # PART 1
@@ -28,7 +17,9 @@ def explain_problem():
     
     explanation = """
     1A: A single shortest-path run from S is not enough as it does not tell you what vertices or edges that could be on the shortest-path to a given destination T. It cannot make the decision to know whether a node or edge fall in the shortest path from S to destination T.
+    
     1B: The structural decision that remains after all inter-location costs are known is: what structure should be used to optimally organize and connect the locations to fufill our overall objective?
+    
     1C: This problem requires a search over orders as the number of different paths that one can take to complete the objective grows combinatorially, and shortest path computations alone do not determine the optimal global arrangement.
     """
     return explanation
@@ -112,7 +103,7 @@ def explain_search():
     answers = """
     The failure mode: A route fails when a shorter distance (more optimal) route is found.
     Counter-example setup: Given this table as my counter-example map,
-        | From \ To | B   | C   | D   | T   |
+        | From - To | B   | C   | D   | T   |
         |-----------|-----|-----|-----|-----|
         | S         | 1   | 2   | 2   | --  |
         | B         | --  | 1   | 100 | 1   |
@@ -147,8 +138,8 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
              cost_so_far, exit_node, best):
     
     # Pruning condition: If the cost so far is already greater than or equal to the best cost found, 
-    # we can safely prune this path because any further exploration will only add more cost, 
-    # and thus cannot yield a better solution than the current best.
+    # we can safely prune this path because all edge weights are nonnegative, 
+    # so any further exploration can only increase or preserve the total cost and therefore cannot produce a better solution than the current best.
     if cost_so_far >= best[0]:
         return
     
@@ -156,7 +147,7 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     if not relics_remaining:
         exit_cost = dist_table[current_loc][exit_node]
         if exit_cost == float('inf'):
-            return
+            return  
         total_cost = cost_so_far + exit_cost
         if total_cost < best[0]:
             best[0] = total_cost
@@ -166,7 +157,7 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     # Recursive case
     for relic in relics_remaining:
         if dist_table[current_loc][relic] == float('inf'):
-            continue  # Skip if the relic is unreachable from the current location
+            continue  
         new_cost = cost_so_far + dist_table[current_loc][relic]
         relics_visited_order.append(relic)
         _explore(dist_table, relic, [r for r in relics_remaining if r != relic], relics_visited_order, new_cost, exit_node, best)
@@ -179,23 +170,10 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
 # =============================================================================
 
 def solve(graph, spawn, relics, exit_node):
-    """
-    Parameters
-    ----------
-    graph : dict[node, list[tuple[node, int]]]
-    spawn : node
-    relics : list[node]
-    exit_node : node
+    
+    dist_table = precompute_distances(graph, spawn, relics, exit_node)
 
-    Returns
-    -------
-    tuple[float, list[node]]
-        (minimum_fuel_cost, ordered_relic_list)
-        Returns (float('inf'), []) if no valid route exists.
-
-    TODO
-    """
-    pass
+    return find_optimal_route(dist_table, spawn, relics, exit_node)
 
 
 # =============================================================================
